@@ -1,0 +1,19 @@
+.cart{
+    width: 200px;
+    height: 388px;
+    margin-top: 140px;
+    margin-left: 10px;
+    display: flex;
+    background-color: white;
+}
+
+.cart-img-top{
+    width: 200px;
+    height: 200px;
+}
+
+.cart-tittle
+{
+    font-size: 12px;
+    line-height: 18px;
+}

@@ -1,0 +1,9 @@
+.App{
+  display: flex;
+  background-color: #E0E0E0;
+}
+
+.App_Header{
+  display: flex;
+  justify-content: space-between;
+}
