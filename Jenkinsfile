@@ -34,17 +34,17 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    DOCKER_IMAGE = docker.build("${REGISTRY}/${PROJECT}/${IMAGE_NAME}:${env.BUILD_NUMBER}")
+                    sh "docker build -t ${REGISTRY}/${PROJECT}/${IMAGE_NAME}:${env.BUILD_NUMBER} ."
                 }
             }
         }
         stage('Push to Harbor') {
             steps {
                 script {
-                    docker.withRegistry("https://${REGISTRY}", HARBOR_CREDS) {
-                        DOCKER_IMAGE.push()
-                        DOCKER_IMAGE.push('latest')
-                    }
+                    sh "docker login ${REGISTRY} -u admin -p Harbor12345"  // Thay YourPassword bằng mật khẩu Harbor
+                    sh "docker push ${REGISTRY}/${PROJECT}/${IMAGE_NAME}:${env.BUILD_NUMBER}"
+                    sh "docker tag ${REGISTRY}/${PROJECT}/${IMAGE_NAME}:${env.BUILD_NUMBER} ${REGISTRY}/${PROJECT}/${IMAGE_NAME}:latest"
+                    sh "docker push ${REGISTRY}/${PROJECT}/${IMAGE_NAME}:latest"
                 }
             }
         }
