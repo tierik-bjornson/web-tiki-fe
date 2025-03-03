@@ -5,8 +5,8 @@ pipeline {
     }
     environment {
         // Cấu hình Harbor
-        REGISTRY = 'harbor.yourdomain.com'       // Thay bằng URL Harbor của bạn
-        PROJECT = 'myproject'                    // Thay bằng tên project trên Harbor
+        REGISTRY = 'localhost'       // Thay bằng URL Harbor của bạn
+        PROJECT = 'lab_1_test'                    // Thay bằng tên project trên Harbor
         IMAGE_NAME = 'web-tiki-fe'               // Tên image, có thể giữ giống tên repo
         HARBOR_CREDS = 'harbor-credentials'      // ID credentials trong Jenkins
         DOCKER_IMAGE = ''                        // Biến để lưu image sau khi build
