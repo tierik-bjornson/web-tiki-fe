@@ -14,16 +14,16 @@ pipeline {
         stage('Start') {
             steps {
                 script {
-                    echo "🚀 Pipeline bắt đầu chạy!"
+                    echo "Pipeline bắt đầu chạy!"
                 }
             }
         }
         stage('Checkout') {
             steps {
                 script {
-                    echo "📥 Đang clone repository..."
+                    echo "Đang clone repository..."
                     git url: 'https://github.com/tierik-bjornson/web-tiki-fe.git', branch: 'main'
-                    echo "✅ Clone thành công!"
+                    echo "Clone thành công!"
                 }
             }
         }
@@ -32,16 +32,16 @@ pipeline {
                 script {
                     echo "📦 Cài đặt dependencies..."
                     sh 'npm install'
-                    echo "✅ Cài đặt hoàn tất!"
+                    echo "Cài đặt hoàn tất!"
                 }
             }
         }
         stage('Build') {
             steps {
                 script {
-                    echo "🛠️ Bắt đầu build..."
+                    echo "Bắt đầu build..."
                     sh 'npm run build'
-                    echo "✅ Build hoàn tất!"
+                    echo "Build hoàn tất!"
                 }
             }
         }
@@ -50,7 +50,7 @@ pipeline {
                 script {
                     echo "🧪 Chạy test..."
                     sh 'npm run test || echo "No tests specified, skipping..."'
-                    echo "✅ Test xong!"
+                    echo "Test xong!"
                 }
             }
         }
@@ -59,27 +59,27 @@ pipeline {
                 script {
                     echo "⚡ Bắt đầu build Docker image..."
                     sh "docker build -t ${REGISTRY}/${PROJECT}/${IMAGE_NAME}:${env.BUILD_NUMBER} ."
-                    echo "✅ Build Docker image hoàn thành!"
+                    echo "Build Docker image hoàn thành!"
                 }
             } 
         } 
         stage('Push to Harbor') {
             steps {
                 script {
-                    echo "🔐 Đăng nhập vào Harbor..."
+                    echo "Đăng nhập vào Harbor..."
                     sh "docker login ${REGISTRY} -u admin -p Harbor12345"
                     echo "🚀 Push image lên Harbor..."
                     sh "docker push ${REGISTRY}/${PROJECT}/${IMAGE_NAME}:${env.BUILD_NUMBER}"
                     sh "docker tag ${REGISTRY}/${PROJECT}/${IMAGE_NAME}:${env.BUILD_NUMBER} ${REGISTRY}/${PROJECT}/${IMAGE_NAME}:latest"
                     sh "docker push ${REGISTRY}/${PROJECT}/${IMAGE_NAME}:latest"
-                    echo "✅ Push thành công!"
+                    echo "ush thành công!"
                 }
             }
         }
         stage('Cleanup') {
             steps {
                 script {
-                    echo "🧹 Dọn dẹp Docker image..."
+                    echo "Dọn dẹp Docker image..."
                     sh "docker rmi ${REGISTRY}/${PROJECT}/${IMAGE_NAME}:${env.BUILD_NUMBER} || true"
                     echo "✅ Dọn dẹp hoàn tất!"
                 }
