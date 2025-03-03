@@ -4,7 +4,7 @@ pipeline {
         nodejs "Node23"
     }
     environment {
-        REGISTRY = 'localhost:80'       // Thay bằng URL Harbor của bạn
+        REGISTRY = 'localhost/harbor'       // Thay bằng URL Harbor của bạn
         PROJECT = 'lab_1_test'                    // Thay bằng tên project trên Harbor
         IMAGE_NAME = 'web-tiki-fe'               // Tên image
         HARBOR_CREDS = 'harbor-credentials'      // ID của credentials trong Jenkins
