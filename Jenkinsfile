@@ -34,10 +34,12 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
+                    echo "⚡ Bắt đầu build Docker image..."
                     sh "docker build -t ${REGISTRY}/${PROJECT}/${IMAGE_NAME}:${env.BUILD_NUMBER} ."
+                    echo "✅ Build Docker image hoàn thành!"
                 }
-            }
-        }
+            } 
+        } 
         stage('Push to Harbor') {
             steps {
                 script {
