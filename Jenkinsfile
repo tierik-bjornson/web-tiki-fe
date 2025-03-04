@@ -6,7 +6,7 @@ pipeline {
     environment {
         REGISTRY = 'localhost:80'
         PROJECT = 'lab_1_test'
-        IMAGE_NAME = 'web-tiki-fe'
+        IMAGE_NAME = 'web-tiki-fe2'
         HARBOR_CREDS = 'harbor-credentials'
         DOCKER_IMAGE = ''
     }
