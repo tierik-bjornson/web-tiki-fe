@@ -30,7 +30,7 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 script {
-                    echo "📦 Cài đặt dependencies..."
+                    echo "Cài đặt dependencies..."
                     sh 'npm install'
                     echo "Cài đặt hoàn tất!"
                 }
@@ -48,7 +48,7 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                    echo "🧪 Chạy test..."
+                    echo "Chạy test..."
                     sh 'npm run test || echo "No tests specified, skipping..."'
                     echo "Test xong!"
                 }
