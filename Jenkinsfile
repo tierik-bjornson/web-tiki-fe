@@ -81,7 +81,7 @@ pipeline {
                 script {
                     echo "Dọn dẹp Docker image..."
                     sh "docker rmi ${REGISTRY}/${PROJECT}/${IMAGE_NAME}:${env.BUILD_NUMBER} || true"
-                    echo "✅ Dọn dẹp hoàn tất!"
+                    echo "Dọn dẹp hoàn tất!"
                 }
             }
         }
